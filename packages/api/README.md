@@ -1,19 +1,24 @@
-# EqualCurve
+# README
 
-To start your Phoenix server:
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
-  * Install dependencies with `mix deps.get`
-  * Create and migrate your database with `mix ecto.setup`
-  * Start Phoenix endpoint with `mix phx.server`
+Things you may want to cover:
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+* Ruby version
 
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
+* System dependencies
 
-## Learn more
+* Configuration
 
-  * Official website: http://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Mailing list: http://groups.google.com/group/phoenix-talk
-  * Source: https://github.com/phoenixframework/phoenix
+* Database creation
+
+* Database initialization
+
+* How to run the test suite
+
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+
+* ...
