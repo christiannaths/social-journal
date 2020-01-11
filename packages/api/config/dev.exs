@@ -4,7 +4,7 @@ use Mix.Config
 config :api, EqualCurve.Repo,
   username: "postgres",
   password: "postgres",
-  database: "api_dev",
+  database: "social_journal_api_dev",
   hostname: "localhost",
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
@@ -17,7 +17,7 @@ config :api, EqualCurve.Repo,
 # with webpack to recompile .js and .css sources.
 config :api, EqualCurveWeb.Endpoint,
   http: [port: 4000],
-  debug_errors: true,
+  debug_errors: false,
   code_reloader: true,
   check_origin: false,
   watchers: []

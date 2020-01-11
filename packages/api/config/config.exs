@@ -12,6 +12,10 @@ config :api,
   ecto_repos: [EqualCurve.Repo],
   generators: [binary_id: true]
 
+# Add support for microseconds at the DB level
+# this avoids having to configure it on every migration file
+config :api, EqualCurveWeb.Repo, migration_timestamps: [type: :utc_datetime_usec]
+
 # Configures the endpoint
 config :api, EqualCurveWeb.Endpoint,
   url: [host: "localhost"],
