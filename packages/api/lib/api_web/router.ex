@@ -5,7 +5,9 @@ defmodule EqualCurveWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/api", EqualCurveWeb do
+  scope "", EqualCurveWeb do
     pipe_through :api
+
+    resources "/health", HealthChecksController, only: [:index]
   end
 end
