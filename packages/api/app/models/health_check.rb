@@ -1,0 +1,1 @@
+class HealthCheck < ApplicationRecord; end
