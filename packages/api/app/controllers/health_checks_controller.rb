@@ -6,9 +6,6 @@ class HealthChecksController < ApplicationController
     return_object[:status] = :SUCCESS
     return_object[:execution] = execution_time_in_ms
 
-
-
-
     render json: return_object
   end
 
@@ -33,8 +30,6 @@ class HealthChecksController < ApplicationController
   def execution_time_in_ms
     return (Time.now - @execution_start_time) * 1000.0
   end
-
-
 
   def set_execution_start_time
     @execution_start_time = Time.now

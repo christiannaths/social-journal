@@ -5,8 +5,19 @@
   "repository": "git@github.com:christiannaths/social-journal.git",
   "author": "Christian Naths <christiannaths@gmail.com>",
   "license": "MIT",
+  "engines": {
+    "node": ">=10.1.0"
+  },
   "devDependencies": {
+    "@christiannaths/eslint-config": "^1.0.1",
+    "@christiannaths/prettier-config": "^1.0.0",
     "@prettier/plugin-ruby": "^0.17.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.9.0",
+    "eslint-plugin-import": "^2.20.0",
+    "eslint-plugin-node": "^11.0.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-react": "^7.17.0",
     "husky": "^4.0.6",
     "lint-staged": "^9.5.0",
     "prettier": "^1.19.1"
