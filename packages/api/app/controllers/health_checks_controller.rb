@@ -13,6 +13,7 @@ class HealthChecksController < ApplicationController
     return_object = touch_health_check.attributes
     return_object[:status] = :SUCCESS
     return_object[:execution] = execution_time_in_ms
+    return_object[:hash_id] = touch_health_check.hashid
 
     render json: return_object
   end

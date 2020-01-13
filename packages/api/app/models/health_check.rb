@@ -1,1 +1,3 @@
-class HealthCheck < ApplicationRecord; end
+class HealthCheck < ApplicationRecord
+  include Hashid::Rails
+end
