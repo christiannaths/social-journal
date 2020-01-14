@@ -5,6 +5,10 @@
   "repository": "git@github.com:christiannaths/social-journal.git",
   "author": "Christian Naths <christiannaths@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "start": "lerna run --parallel start",
+    "edit": "lerna run --parallel dotenv cross-var edit"
+  },
   "engines": {
     "node": ">=10.1.0"
   },
@@ -19,7 +23,9 @@
     "eslint-plugin-prettier": "^3.1.2",
     "eslint-plugin-react": "^7.17.0",
     "husky": "^4.0.6",
+    "lerna": "^3.20.2",
     "lint-staged": "^9.5.0",
     "prettier": "^1.19.1"
-  }
+  },
+  "dependencies": {}
 }

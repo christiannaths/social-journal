@@ -3,7 +3,5 @@ Rails.application.routes.draw do
   post '/health', to: 'health_checks#post'
 
   resources :users
-  resources :journals, except: %w[show]
-
-  get '/:namespace', to: 'journals#show'
+  resources :journals
 end

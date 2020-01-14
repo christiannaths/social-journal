@@ -1,0 +1,12 @@
+{
+  "name": "gateway",
+  "version": "1.0.0",
+  "repository": "git@github.com:christiannaths/social-journal.git",
+  "author": "Christian Naths <christiannaths@gmail.com>",
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "start": "echo 'Nothing to see here...' && exit 0",
+    "edit": "dotenv cross-var '$EDITOR' ."
+  }
+}
