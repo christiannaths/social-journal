@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_12_235424) do
+ActiveRecord::Schema.define(version: 2020_01_14_030850) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "entries", force: :cascade do |t|
+    t.bigint "journal_id", null: false
+    t.string "title"
+    t.text "body"
+    t.datetime "published_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["journal_id"], name: "index_entries_on_journal_id"
+  end
 
   create_table "health_checks", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
@@ -30,8 +40,8 @@ ActiveRecord::Schema.define(version: 2020_01_12_235424) do
   end
 
   create_table "user_journals", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "journal_id"
+    t.bigint "user_id", null: false
+    t.bigint "journal_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["journal_id"], name: "index_user_journals_on_journal_id"
@@ -45,4 +55,7 @@ ActiveRecord::Schema.define(version: 2020_01_12_235424) do
     t.index ["session_id"], name: "index_users_on_session_id"
   end
 
+  add_foreign_key "entries", "journals"
+  add_foreign_key "user_journals", "journals"
+  add_foreign_key "user_journals", "users"
 end

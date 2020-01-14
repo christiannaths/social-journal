@@ -1,8 +1,8 @@
 class CreateUserJournals < ActiveRecord::Migration[6.0]
   def change
     create_table :user_journals do |t|
-      t.references :user
-      t.references :journal
+      t.references :user, null: false, foreign_key: true
+      t.references :journal, null: false, foreign_key: true
 
       t.timestamps
     end
