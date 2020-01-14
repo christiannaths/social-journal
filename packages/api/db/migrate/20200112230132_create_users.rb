@@ -1,7 +1,7 @@
 class CreateUsers < ActiveRecord::Migration[6.0]
   def change
     create_table :users do |t|
-      t.string :session_id, index: true
+      t.string :session_id, index: { unique: true }
 
       t.timestamps
     end

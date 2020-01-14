@@ -4,9 +4,11 @@ Rails.application.routes.draw do
 
   scope :v1 do
     resources :users do
-      resources :journals, only: %i[index new create]
+      resources :journals, only: %i[index create]
     end
-    resources :journals, only: %i[show edit update destroy]
-    resources :entries
+    resources :journals, only: %i[show update destroy] do
+      resources :entries, only: %i[index create]
+    end
+    resources :entries, only: %i[show update destroy]
   end
 end

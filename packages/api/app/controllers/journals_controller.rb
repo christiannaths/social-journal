@@ -1,5 +1,6 @@
 class JournalsController < ApplicationController
   before_action :set_journal, only: %i[show update destroy]
+  before_action :set_user, only: %i[create]
 
   # GET /journals
   def index
@@ -15,7 +16,7 @@ class JournalsController < ApplicationController
 
   # POST /journals
   def create
-    @journal = Journal.new(journal_params)
+    @journal = @user.journals.build(journal_params)
 
     if @journal.save
       render json: @journal, status: :created, location: @journal
@@ -43,6 +44,10 @@ class JournalsController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_journal
     @journal = Journal.find(params[:id])
+  end
+
+  def set_user
+    @user = User.find(params[:user_id])
   end
 
   # Only allow a trusted parameter "white list" through.

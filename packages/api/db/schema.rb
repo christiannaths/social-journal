@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 2020_01_14_030850) do
     t.string "session_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["session_id"], name: "index_users_on_session_id"
+    t.index ["session_id"], name: "index_users_on_session_id", unique: true
   end
 
   add_foreign_key "entries", "journals"

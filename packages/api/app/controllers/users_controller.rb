@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
   # GET /users
   def index
-    @users = user.all
+    @users = User.all
 
     render json: @users
   end
@@ -15,7 +15,7 @@ class UsersController < ApplicationController
 
   # POST /users
   def create
-    @user = user.new(user_params)
+    @user = User.new(user_params)
 
     if @user.save
       render json: @user, status: :created, location: @user
@@ -42,11 +42,11 @@ class UsersController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_user
-    @user = user.find(params[:id])
+    @user = User.find(params[:id])
   end
 
   # Only allow a trusted parameter "white list" through.
   def user_params
-    params.fetch(:user, {})
+    params.fetch(:user, {}).permit(:session_id)
   end
 end
