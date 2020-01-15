@@ -1,0 +1,11 @@
+{
+  "debug": true,
+  "server": {
+    "host": "localhost",
+    "port": "4000"
+  },
+  "backendService": {
+    "origin": "http://localhost:3000"
+  },
+  "serviceHealthCheckDelay": 0
+}

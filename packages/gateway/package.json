@@ -1,12 +1,43 @@
 {
-  "name": "gateway",
-  "version": "1.0.0",
-  "repository": "git@github.com:christiannaths/social-journal.git",
-  "author": "Christian Naths <christiannaths@gmail.com>",
+  "name": "@ingenio/gateway",
+  "version": "0.1.0",
+  "main": "dist/server.js",
+  "typings": "dist/index.d.ts",
   "license": "UNLICENSED",
   "private": true,
   "scripts": {
-    "start": "echo 'Nothing to see here...' && exit 0",
-    "edit": "dotenv cross-var '$EDITOR' ."
+    "start": "ts-node-dev --no-notify src/server.ts",
+    "serve": "nodemon --delay 2500 dist/server.js",
+    "serve:production": "node dist/server.js",
+    "build": "tsc",
+    "build:watch": "yarn build --watch --preserveWatchOutput",
+    "build:clean": "rimraf dist/*",
+    "pretest": "cls || clear",
+    "test": "ts-node node_modules/.bin/jasmine --config=jasmine.json",
+    "test:watch": "nodemon --watch src --ext ts --delay 500ms --exec yarn test"
+  },
+  "dependencies": {
+    "@okta/jwt-verifier": "^1.0.0",
+    "@okta/okta-sdk-nodejs": "^3.1.0",
+    "@types/node": "^12.12.18",
+    "apollo-server": "^2.9.4",
+    "axios": "^0.19.0",
+    "config": "^3.2.3",
+    "deepmerge": "^4.2.1",
+    "dotenv": "^8.2.0",
+    "graphql": "^14.5.7",
+    "lodash": "^4.17.15"
+  },
+  "devDependencies": {
+    "@okta/configuration-validation": "^0.4.1",
+    "@types/config": "^0.0.35",
+    "@types/dotenv": "^8.2.0",
+    "@types/jasmine": "^3.5.0",
+    "@types/node": "^12.11.5",
+    "jasmine": "^3.5.0",
+    "nodemon": "^2.0.1",
+    "rimraf": "^3.0.0",
+    "ts-node": "^8.5.4",
+    "ts-node-dev": "^1.0.0-pre.43"
   }
 }

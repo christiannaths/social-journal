@@ -1,0 +1,22 @@
+{
+  "debug": "DEBUG",
+  "server": {
+    "host": "HOST",
+    "port": "PORT"
+  },
+  "backendService": {
+    "origin": "BACKEND_SERVICE_ORIGIN"
+  },
+  "serviceHealthCheckDelay": "SERVICE_HEALTH_CHECK_DELAY",
+  "okta": {
+    "url": "OKTA_URL",
+    "clientId": "OKTA_CLIENT_ID",
+    "token": "OKTA_TOKEN",
+    "aud": "OKTA_AUD"
+  },
+  "clio": {
+    "clientId": "CLIO_CLIENT_ID",
+    "clientSecret": "CLIO_CLIENT_SECRET",
+    "redirectUrl": "CLIO_REDIRECT_URL"
+  }
+}
