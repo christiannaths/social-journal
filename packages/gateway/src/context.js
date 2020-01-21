@@ -1,31 +1,30 @@
-const AuthService = require('./services/auth');
-const BackendService = require('./services/backend');
+const Api = require('./services/api');
 
 /**
  * This is to make the life of a developer just a
  * little bit easier. Set the
- * x-unsafe-authorize-as-user header
- * to an email address that exists in the db and
- * you're off to the races 🏇
+ * x-unsafe-authorize-as-user header to a user's
+ * session id that exists in the db and you're off
+ * to the races 🏇
  */
-async function developmentAuthorize(request) {
+async function unsafeAuthorizeOverride(request) {
   const env = process.env.NODE_ENV || 'production';
   if (env !== 'development') return;
 
   console.warn('SECURITY ALERT');
   console.warn('The graphql server is running in development mode.');
 
-  const email = request.headers['x-unsafe-authorize-as-user'];
+  const sessionId = request.headers['x-unsafe-authorize-as-user'];
 
-  if (!email) return;
+  if (!sessionId) return;
 
   console.warn('SECURITY ALERT');
   console.warn(
     'x-unsafe-authorize-as-user has been set. Authorizing for',
-    email,
+    sessionId,
   );
 
-  const user = await BackendService.getUserByEmail(email);
+  const user = { sessionId };
 
   return user;
 }
@@ -39,37 +38,39 @@ async function developmentAuthorize(request) {
  * unauthenticated request.
  */
 async function authorizedUserContext(request) {
-  const override = await developmentAuthorize(request);
+  const override = await unsafeAuthorizeOverride(request);
 
   if (override) return override;
 
-  const auth = request.headers.authorization || '';
-  const [, token] = auth.split(' ');
+  return null;
 
-  if (!token) return undefined;
+  // const auth = request.headers.authorization || '';
+  // const [, token] = auth.split(' ');
 
-  const authorizedUser = await AuthService.getUser(token);
-  const { email } = authorizedUser || {};
+  // if (!token) return undefined;
 
-  if (!email) return undefined;
+  // const authorizedUser = await AuthService.getUser(token);
+  // const { email } = authorizedUser || {};
 
-  const user = await BackendService.getUserByEmail(email);
+  // if (!email) return undefined;
 
-  if (!user || !user.id) return undefined;
+  // const user = await Api.getUserByEmail(email);
 
-  return {
-    ...user,
-    email,
-    token,
-  };
+  // if (!user || !user.id) return undefined;
+
+  // return {
+  //   ...user,
+  //   email,
+  //   token,
+  // };
 }
 
 const context = async ({ req }) => {
   try {
     const currentUser = await authorizedUserContext(req);
-    return { auth: currentUser };
+    return { currentUser };
   } catch {
-    return { auth: null };
+    return {};
   }
 };
 

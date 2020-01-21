@@ -4,13 +4,19 @@
   "main": "index.js",
   "repository": "git@github.com:christiannaths/social-journal.git",
   "author": "Christian Naths <christiannaths@gmail.com>",
-  "license": "MIT",
+  "private": true,
+  "license": "UNLICENSED",
   "scripts": {
     "start": "lerna run --parallel start",
     "edit": "lerna run --parallel dotenv cross-var edit"
   },
   "engines": {
     "node": ">=10.1.0"
+  },
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ]
   },
   "devDependencies": {
     "@christiannaths/eslint-config": "^1.0.1",

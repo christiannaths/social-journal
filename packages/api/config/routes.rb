@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
-  get '/health', to: 'health_checks#get'
-  post '/health', to: 'health_checks#post'
-
   scope :v1 do
+    get '/health', to: 'health_checks#get'
+    post '/health', to: 'health_checks#post'
     resources :users do
       resources :journals, only: %i[index create]
     end

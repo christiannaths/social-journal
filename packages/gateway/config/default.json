@@ -4,19 +4,7 @@
     "host": "localhost",
     "port": "4000"
   },
-  "backendService": {
-    "origin": "http://localhost:8080"
-  },
-  "serviceHealthCheckDelay": 10,
-  "okta": {
-    "url": "https://dev-951664.okta.com",
-    "clientId": "0oa1io52j6fEqHUq1357",
-    "token": "00SHK8aHWVaNJp59Ov0D92cUVlENLdJkB9BI3OeS_m",
-    "aud": "api://default"
-  },
-  "clio": {
-    "clientId": "MK4QpvhEbTRg0RSlmuIqmaJOIuWxiedc9bSHF5Ur",
-    "clientSecret": "PyWwetZpxbmY0BruwuhQlJoiGnwpMUa4dZHuBEI3",
-    "redirectUrl": "http://localhost:4200/oauth/clio"
+  "apiService": {
+    "origin": "http://localhost:3000"
   }
 }

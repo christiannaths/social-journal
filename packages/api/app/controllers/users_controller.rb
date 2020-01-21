@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[show update destroy]
+  before_action :set_user, only: %i[update destroy]
 
   # GET /users
   def index
@@ -10,6 +10,7 @@ class UsersController < ApplicationController
 
   # GET /users/1
   def show
+    @user = User.find_by(session_id: params[:id])
     render json: @user
   end
 

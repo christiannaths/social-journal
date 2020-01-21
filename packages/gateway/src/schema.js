@@ -1,7 +1,8 @@
 const { gql } = require('apollo-server');
 const Health = require('./models/health');
+const User = require('./models/user');
 
-const Setup = gql`
+const baseTypeDefs = gql`
   scalar DateTime
 
   type Query {
@@ -13,9 +14,7 @@ const Setup = gql`
   }
 `;
 
-const typeDefs = [Setup, Health.typeDefs];
+const typeDefs = [baseTypeDefs, Health.typeDefs, User.typeDefs];
+const resolvers = [Health.resolvers, User.resolvers];
 
-const resolvers = [Health.resolvers];
-
-export { typeDefs, resolvers };
-export default { typeDefs, resolvers };
+module.exports = { typeDefs, resolvers };

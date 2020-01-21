@@ -1,43 +1,21 @@
 {
-  "name": "@ingenio/gateway",
+  "name": "gateway",
   "version": "0.1.0",
-  "main": "dist/server.js",
-  "typings": "dist/index.d.ts",
+  "main": "src/index.js",
   "license": "UNLICENSED",
   "private": true,
   "scripts": {
-    "start": "ts-node-dev --no-notify src/server.ts",
-    "serve": "nodemon --delay 2500 dist/server.js",
-    "serve:production": "node dist/server.js",
-    "build": "tsc",
-    "build:watch": "yarn build --watch --preserveWatchOutput",
-    "build:clean": "rimraf dist/*",
-    "pretest": "cls || clear",
-    "test": "ts-node node_modules/.bin/jasmine --config=jasmine.json",
-    "test:watch": "nodemon --watch src --ext ts --delay 500ms --exec yarn test"
+    "start": "node-dev --no-notify src/index.js"
   },
   "dependencies": {
-    "@okta/jwt-verifier": "^1.0.0",
-    "@okta/okta-sdk-nodejs": "^3.1.0",
-    "@types/node": "^12.12.18",
     "apollo-server": "^2.9.4",
     "axios": "^0.19.0",
+    "camelcase-keys": "^6.1.1",
     "config": "^3.2.3",
-    "deepmerge": "^4.2.1",
     "dotenv": "^8.2.0",
-    "graphql": "^14.5.7",
-    "lodash": "^4.17.15"
+    "graphql": "^14.5.7"
   },
   "devDependencies": {
-    "@okta/configuration-validation": "^0.4.1",
-    "@types/config": "^0.0.35",
-    "@types/dotenv": "^8.2.0",
-    "@types/jasmine": "^3.5.0",
-    "@types/node": "^12.11.5",
-    "jasmine": "^3.5.0",
-    "nodemon": "^2.0.1",
-    "rimraf": "^3.0.0",
-    "ts-node": "^8.5.4",
-    "ts-node-dev": "^1.0.0-pre.43"
+    "node-dev": "^1.0.0-pre.43"
   }
 }
