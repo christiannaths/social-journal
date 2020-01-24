@@ -6,5 +6,8 @@
   },
   "apiService": {
     "origin": "http://localhost:3000"
+  },
+  "firebase": {
+    "serviceAccount": "secrets/fb-admin-staging.json"
   }
 }

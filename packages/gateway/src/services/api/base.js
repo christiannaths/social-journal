@@ -13,6 +13,8 @@ async function request(endpoint, options, method) {
   try {
     const response = await axios.request(options);
 
+    if (!response.data) return null;
+
     return camelcaseKeys(response.data);
   } catch (error) {
     const { response } = error;
