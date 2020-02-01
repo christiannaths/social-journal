@@ -1,10 +1,10 @@
 {
-  "name": "api",
-  "version": "1.0.0",
+  "name": "@social-journal/api",
+  "version": "0.1.0",
   "repository": "git@github.com:christiannaths/social-journal.git",
   "author": "Christian Naths <christiannaths@gmail.com>",
-  "license": "UNLICENSED",
   "private": true,
+  "license": "UNLICENSED",
   "scripts": {
     "start": "rails s"
   }

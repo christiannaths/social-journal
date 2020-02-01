@@ -1,22 +1,13 @@
 {
-  "name": "social-journal",
+  "name": "@social-journal/monorepo",
   "version": "1.0.0",
-  "main": "index.js",
   "repository": "git@github.com:christiannaths/social-journal.git",
   "author": "Christian Naths <christiannaths@gmail.com>",
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
     "start": "lerna run --parallel start",
-    "edit": "lerna run --parallel dotenv cross-var edit"
-  },
-  "engines": {
-    "node": ">=10.1.0"
-  },
-  "workspaces": {
-    "packages": [
-      "packages/*"
-    ]
+    "nuke": "find . -name \"node_modules\" -type d -prune -exec rm -rf '{}' +"
   },
   "devDependencies": {
     "@christiannaths/eslint-config": "^1.0.1",
@@ -33,5 +24,27 @@
     "lint-staged": "^9.5.0",
     "prettier": "^1.19.1"
   },
-  "dependencies": {}
+  "engines": {
+    "node": ">=10.1.0"
+  },
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ],
+    "nohoist": [
+      "**/react-scripts"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
 }
