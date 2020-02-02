@@ -1,3 +1,4 @@
-import Button from './elements/Button';
+import * as Elements from './elements';
+import * as Patterns from './patterns';
 
-export { Button };
+export { Elements, Patterns };
