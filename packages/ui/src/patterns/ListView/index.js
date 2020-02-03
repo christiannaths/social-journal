@@ -5,7 +5,7 @@ import Section from './components/Section';
 import Item from './components/Item';
 
 /**
- * `import { ListView } from '@social-journal/ui/elements`
+ * `import { ListView } from '@orca/ui/elements`
  */
 function ListView(props) {
   return <Layout {...props} />;

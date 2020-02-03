@@ -3,9 +3,9 @@ import logo from './logo.svg';
 import { Layout, Header, Title, Logo } from './style';
 import StyleReset from './styleReset';
 import StyleTypography from './styleTypography';
-import { Patterns } from '@social-journal/ui';
-import * as Elements from '@social-journal/ui/elements';
-import { Button } from '@social-journal/ui/elements';
+import { Patterns } from '@orca/ui';
+import * as Elements from '@orca/ui/elements';
+import { Button } from '@orca/ui/elements';
 
 console.log({ Patterns });
 console.log({ Elements });

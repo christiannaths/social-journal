@@ -40,7 +40,7 @@ const Layout = styled.div`
 `;
 
 /**
- * `import { StaggeredGrid } from '@social-journal/ui/elements`
+ * `import { StaggeredGrid } from '@orca/ui/elements`
  */
 function StaggeredGrid(props) {
   return <Layout {...props} n={props.children.length} />;

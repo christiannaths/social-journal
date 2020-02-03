@@ -12,7 +12,7 @@ const Layout = styled.button`
 `;
 
 /**
- * `import Button from '@social-journal/ui/elements/Button`
+ * `import Button from '@orca/ui/elements/Button`
  */
 function Button(props) {
   const { text, ...rest } = props;

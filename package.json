@@ -1,5 +1,5 @@
 {
-  "name": "@social-journal/monorepo",
+  "name": "@orca/monorepo",
   "version": "1.0.0",
   "repository": "git@github.com:christiannaths/social-journal.git",
   "author": "Christian Naths <christiannaths@gmail.com>",
@@ -13,12 +13,13 @@
     "@christiannaths/eslint-config": "^1.0.1",
     "@christiannaths/prettier-config": "^1.0.0",
     "@prettier/plugin-ruby": "^0.17.0",
+    "dotenv-cli": "^3.1.0",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.9.0",
     "eslint-plugin-import": "^2.20.0",
     "eslint-plugin-node": "^11.0.0",
     "eslint-plugin-prettier": "^3.1.2",
-    "eslint-plugin-react": "^7.17.0",
+    "eslint-plugin-react": "^7.18.2",
     "husky": "^4.0.6",
     "lerna": "^3.20.2",
     "lint-staged": "^9.5.0",
@@ -32,7 +33,13 @@
       "packages/*"
     ],
     "nohoist": [
-      "**/react-scripts"
+      "**/react-scripts",
+      "**/eslint",
+      "**/eslint-config-prettier",
+      "**/eslint-plugin-import",
+      "**/eslint-plugin-node",
+      "**/eslint-plugin-prettier",
+      "**/eslint-plugin-react"
     ]
   },
   "browserslist": {
@@ -46,5 +53,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "dependencies": {
+    "config": "^3.2.5"
   }
 }

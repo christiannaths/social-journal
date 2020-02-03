@@ -14,7 +14,7 @@ const Layout = styled.div`
 `;
 
 /**
- * `import { ViewHeader } from '@social-journal/ui/elements`
+ * `import { ViewHeader } from '@orca/ui/elements`
  */
 function ViewHeader(props) {
   return <Layout {...props} n={props.children.length} />;

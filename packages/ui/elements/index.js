@@ -3713,6 +3713,10 @@ var Layout = _styled.button.withConfig({
   displayName: "Button__Layout",
   componentId: "a8ieeq-0"
 })(["background-color:blue;color:white;border:none;padding:0.75rem 1rem;font-size:1rem;margin:0.375rem 0.25rem;"]);
+/**
+ * `import Button from '@orca/ui/elements/Button`
+ */
+
 
 function Button(props) {
   var text = props.text,
@@ -3722,7 +3726,7 @@ function Button(props) {
 }
 
 Button.propTypes = {
-  text: propTypes.string
+  text: propTypes.string.isRequired
 };
 
 var Style = _styled.h1.withConfig({

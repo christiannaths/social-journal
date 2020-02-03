@@ -1,5 +1,23 @@
 import _styled from 'styled-components';
 
+function _extends() {
+  _extends = Object.assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+
+    return target;
+  };
+
+  return _extends.apply(this, arguments);
+}
+
 function _objectWithoutPropertiesLoose(source, excluded) {
   if (source == null) return {};
   var target = {};
@@ -3713,6 +3731,10 @@ var Layout = _styled.button.withConfig({
   displayName: "Button__Layout",
   componentId: "a8ieeq-0"
 })(["background-color:blue;color:white;border:none;padding:0.75rem 1rem;font-size:1rem;margin:0.375rem 0.25rem;"]);
+/**
+ * `import Button from '@orca/ui/elements/Button`
+ */
+
 
 function Button(props) {
   var text = props.text,
@@ -3722,7 +3744,7 @@ function Button(props) {
 }
 
 Button.propTypes = {
-  text: propTypes.string
+  text: propTypes.string.isRequired
 };
 
 var Style = _styled.h1.withConfig({
@@ -3748,43 +3770,208 @@ var index = /*#__PURE__*/Object.freeze({
 });
 
 var Layout$1 = _styled.div.withConfig({
-  displayName: "ControlBar__Layout",
-  componentId: "sc-9zjhh1-0"
-})(["padding:20px;display:flex;width:100%;background:silver;"]);
+  displayName: "Layout",
+  componentId: "sc-17zidps-0"
+})(["display:flex;flex-direction:column;justify-content:flex-start;align-items:stretch;background-color:#f0f0f4;section + section{margin-top:1.25rem;}section + section > header{margin-top:0;}"]);
 
-var Title$1 = _styled.h2.withConfig({
-  displayName: "ControlBar__Title",
-  componentId: "sc-9zjhh1-1"
-})(["flex:1;text-align:center;"]);
+var Title$1 = _styled.header.withConfig({
+  displayName: "Section__Title",
+  componentId: "sc-1mrshpj-0"
+})(["font-size:0.8em;margin:0;color:#9d9daf;font-weight:normal;padding:0.25rem 1rem;margin-top:1rem;"]);
 
-var LeftButton = _styled(Button).withConfig({
-  displayName: "ControlBar__LeftButton",
-  componentId: "sc-9zjhh1-2"
-})(["flex:0;"]);
+var List = _styled.ul.withConfig({
+  displayName: "Section__List",
+  componentId: "sc-1mrshpj-1"
+})(["padding:0;margin:0;"]);
 
-var RightButton = _styled(Button).withConfig({
-  displayName: "ControlBar__RightButton",
-  componentId: "sc-9zjhh1-3"
-})(["flex:0;"]);
-
-function ControlBar(props) {
-  var text = props.text;
-  return react.createElement(Layout$1, null, react.createElement(LeftButton, {
-    text: "<"
-  }), react.createElement(Title$1, null, "Hello World With More Text"), react.createElement(RightButton, {
-    text: "X"
+function Section(props) {
+  return react.createElement("section", null, props.title && react.createElement(Title$1, {
+    children: props.title
+  }), react.createElement(List, {
+    children: props.children
   }));
 }
 
-ControlBar.propTypes = {
-  text: propTypes.string
+Section.propTypes = {
+  title: propTypes.string,
+  children: propTypes.any
 };
+Section.displayName = 'ListView.Section';
+
+var Layout$2 = _styled.li.withConfig({
+  displayName: "Item__Layout",
+  componentId: "t4pvno-0"
+})(["display:flex;justify-content:stretch;align-items:center;background-color:#ffffff;margin-bottom:1px;padding:0.75em 1em;line-height:1.25em;color:#9d9db1;cursor:", ";svg + section{margin-left:0.5em;}section + svg{margin-left:0.5em;}"], function (props) {
+  return props.onClick ? 'pointer' : 'default';
+});
+
+var Content = _styled.section.withConfig({
+  displayName: "Item__Content",
+  componentId: "t4pvno-1"
+})(["display:flex;flex:1;flex-direction:", ";justify-content:", ";"], function (props) {
+  return props.inline ? 'row' : 'column';
+}, function (props) {
+  return props.inline ? 'space-between' : 'normal';
+});
+
+var Title$2 = _styled.span.withConfig({
+  displayName: "Item__Title",
+  componentId: "t4pvno-2"
+})(["color:#272730;"]);
+
+var Subtitle = _styled.small.withConfig({
+  displayName: "Item__Subtitle",
+  componentId: "t4pvno-3"
+})(["font-size:", ";"], function (props) {
+  return props.inline ? '1em' : 'unset';
+});
+
+function Item(props) {
+  var Icon = props.icon;
+  var ActionIcon = props.actionIcon;
+  var inline = Boolean(props.inline);
+  return react.createElement(Layout$2, props, Icon, react.createElement(Content, {
+    inline: inline
+  }, react.createElement(Title$2, {
+    children: props.title
+  }), props.subtitle && react.createElement(Subtitle, {
+    inline: inline,
+    children: props.subtitle
+  })), ActionIcon);
+}
+
+Item.propTypes = {
+  inline: propTypes.bool,
+  title: propTypes.string.isRequired,
+  subtitle: propTypes.string,
+  icon: propTypes.element,
+  actionIcon: propTypes.element,
+  onClick: propTypes.func,
+  children: propTypes.element
+};
+Item.displayName = 'ListViewItem';
+
+/**
+ * `import { ListView } from '@orca/ui/elements`
+ */
+
+function ListView(props) {
+  return react.createElement(Layout$1, props);
+}
+
+ListView.propTypes = {
+  children: propTypes.any
+};
+ListView.displayName = 'ListView';
+ListView.Section = Section;
+ListView.Item = Item;
+
+var calculateRows = function calculateRows(props) {
+  var n = props.n;
+  var row = Math.ceil(n / 2);
+  var rowCount = Math.ceil(row / 3 * 28);
+  return rowCount;
+};
+
+var Layout$3 = _styled.div.withConfig({
+  displayName: "StaggeredGrid__Layout",
+  componentId: "yfjtyb-0"
+})(["width:100%;display:grid;grid-gap:5px;grid-template-columns:repeat(2,1fr);grid-template-rows:repeat(", ",24px);grid-auto-flow:dense;justify-content:center;padding:0 5px;--small:span 9;--large:span 10;& > *{grid-row:auto / var(--small);}& > *:nth-child(2n -1){grid-column:1 / span 1;}& > *:nth-child(2n){grid-column:2 / span 1;}& > *:nth-child(6n - 5){grid-row:auto / var(--large);}& > *:nth-child(6n){grid-row:auto / var(--large);}"], calculateRows);
+/**
+ * `import { StaggeredGrid } from '@orca/ui/elements`
+ */
+
+
+function StaggeredGrid(props) {
+  return react.createElement(Layout$3, _extends({}, props, {
+    n: props.children.length
+  }));
+}
+
+StaggeredGrid.displayName = 'StaggeredGrid';
+StaggeredGrid.propTypes = {};
+
+var Layout$4 = _styled.div.withConfig({
+  displayName: "Space__Layout",
+  componentId: "sc-14hitlg-0"
+})(["display:flex;"]);
+
+function Space(props) {
+  return react.createElement(Layout$4, props);
+}
+
+Space.propTypes = {};
+Space.displayName = 'StaggeredGrid.Space';
+
+StaggeredGrid.Space = Space;
+
+var Layout$5 = _styled.div.withConfig({
+  displayName: "ViewHeader__Layout",
+  componentId: "t69o7x-0"
+})(["display:flex;justify-content:center;align-items:center;flex-shrink:0;height:65px;background:inherit;text-align:center;box-shadow:0 0 3px rgba(0,0,0,0.15);"]);
+/**
+ * `import { ViewHeader } from '@orca/ui/elements`
+ */
+
+
+function ViewHeader(props) {
+  return react.createElement(Layout$5, _extends({}, props, {
+    n: props.children.length
+  }));
+}
+
+ViewHeader.propTypes = {
+  children: propTypes.any.isRequired
+};
+ViewHeader.displayName = 'ViewHeader';
+
+var ViewHeaderTitle = _styled.h1.withConfig({
+  displayName: "Title__ViewHeaderTitle",
+  componentId: "sc-18779tj-0"
+})(["flex:3;font-size:1.25em;line-height:1.1;margin:0;"]);
+
+ViewHeaderTitle.propTypes = {
+  children: propTypes.any.isRequired
+};
+ViewHeaderTitle.displayName = 'ViewHeaderTitle';
+
+var LeftButton = _styled.button.withConfig({
+  displayName: "LeftButton",
+  componentId: "xa33xo-0"
+})(["text-align:left;flex:1;"]);
+
+LeftButton.propTypes = {
+  children: propTypes.any.isRequired
+};
+LeftButton.defaultProps = {
+  children: 'Back'
+};
+LeftButton.displayName = 'ViewHeaderLeftButton';
+
+var RightButton = _styled.button.withConfig({
+  displayName: "RightButton",
+  componentId: "eafgua-0"
+})(["text-align:right;flex:1;"]);
+
+RightButton.propTypes = {
+  children: propTypes.any.isRequired
+};
+RightButton.defaultProps = {
+  children: 'Save'
+};
+RightButton.displayName = 'ViewHeaderRightButton';
+
+ViewHeader.Title = ViewHeaderTitle;
+ViewHeader.LeftButton = LeftButton;
+ViewHeader.RightButton = RightButton;
 
 
 
 var index$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  ControlBar: ControlBar
+  ListView: ListView,
+  StaggeredGrid: StaggeredGrid,
+  ViewHeader: ViewHeader
 });
 
 export { index as Elements, index$1 as Patterns };

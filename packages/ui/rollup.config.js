@@ -1,6 +1,7 @@
 import babel from 'rollup-plugin-babel';
 import commonjs from '@rollup/plugin-commonjs';
 import resolve from '@rollup/plugin-node-resolve';
+import svgr from '@svgr/rollup';
 
 const options = {
   external: ['styled-components'],
@@ -8,6 +9,7 @@ const options = {
     babel({
       exclude: 'node_modules/**',
     }),
+    svgr(),
     resolve({ preferBuiltins: true }),
     commonjs(),
   ],
@@ -40,4 +42,13 @@ const patterns = {
   ...options,
 };
 
-export default [main, elements, patterns];
+const icons = {
+  input: 'src/icons/index.js',
+  output: {
+    dir: 'icons',
+    format: 'esm',
+  },
+  ...options,
+};
+
+export default [main, elements, patterns, icons];
