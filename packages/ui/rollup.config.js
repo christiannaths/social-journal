@@ -1,6 +1,7 @@
 import babel from 'rollup-plugin-babel';
 import commonjs from '@rollup/plugin-commonjs';
 import resolve from '@rollup/plugin-node-resolve';
+import json from '@rollup/plugin-json';
 import svgr from '@svgr/rollup';
 
 const options = {
@@ -9,6 +10,7 @@ const options = {
     babel({
       exclude: 'node_modules/**',
     }),
+    json(),
     svgr(),
     resolve({ preferBuiltins: true }),
     commonjs(),
@@ -16,9 +18,9 @@ const options = {
 };
 
 const main = {
-  input: 'src/index.js',
+  input: ['src/index.js', 'src/theme.json'],
   output: {
-    file: './index.js',
+    dir: './',
     format: 'esm',
   },
   ...options,
@@ -51,4 +53,13 @@ const icons = {
   ...options,
 };
 
-export default [main, elements, patterns, icons];
+const base = {
+  input: 'src/base/index.js',
+  output: {
+    dir: 'base',
+    format: 'esm',
+  },
+  ...options,
+};
+
+export default [main, base, elements, patterns, icons];

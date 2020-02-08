@@ -5,11 +5,7 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
-    "start2": "NODE_CONFIG_DIR=../../config node-dev --no-notify src/index.js",
-    "dotenv-example": "dotenv --help",
-    "help": "orca-scripts help",
-    "start": "orca-scripts start",
-    "version": "orca-scripts version"
+    "start": "NODE_CONFIG_DIR=\"../../config\" node-dev src/index.js"
   },
   "dependencies": {
     "@firebase/app-types": "^0.5.0",

@@ -1,27 +1,42 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/macro';
+import theme from '../theme';
 
-const Layout = styled.button`
-  background-color: blue;
-  color: white;
+const StyledButton = styled.button`
   border: none;
-  padding: 0.75rem 1rem;
-  font-size: 1rem;
-  margin: 0.375rem 0.25rem;
+  background: transparent;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  cursor: pointer;
+
+  &:after {
+    content: '';
+    position: absolute;
+    left: 0%;
+    top: ${theme.lineHeight / 3}px;
+    height: ${theme.lineHeight / 4}px;
+    right: 100%;
+    background: #f6f343aa;
+    mix-blend-mode: darken;
+    transition: right 350ms ease;
+  }
+
+  &:hover {
+    font-weight: bold;
+
+    &:after {
+      right: 0%;
+    }
+  }
 `;
 
 /**
- * `import Button from '@orca/ui/elements/Button`
+ * `import { Button } from '@orca/ui/elements`
  */
 function Button(props) {
-  const { text, ...rest } = props;
-
-  return <Layout {...rest}>{text}</Layout>;
+  return <StyledButton {...props} />;
 }
-
-Button.propTypes = {
-  text: PropTypes.string.isRequired,
-};
 
 export default Button;

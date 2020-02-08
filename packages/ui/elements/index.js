@@ -1,41 +1,5 @@
 import _styled from 'styled-components';
 
-function _objectWithoutPropertiesLoose(source, excluded) {
-  if (source == null) return {};
-  var target = {};
-  var sourceKeys = Object.keys(source);
-  var key, i;
-
-  for (i = 0; i < sourceKeys.length; i++) {
-    key = sourceKeys[i];
-    if (excluded.indexOf(key) >= 0) continue;
-    target[key] = source[key];
-  }
-
-  return target;
-}
-
-function _objectWithoutProperties(source, excluded) {
-  if (source == null) return {};
-
-  var target = _objectWithoutPropertiesLoose(source, excluded);
-
-  var key, i;
-
-  if (Object.getOwnPropertySymbols) {
-    var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
-
-    for (i = 0; i < sourceSymbolKeys.length; i++) {
-      key = sourceSymbolKeys[i];
-      if (excluded.indexOf(key) >= 0) continue;
-      if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
-      target[key] = source[key];
-    }
-  }
-
-  return target;
-}
-
 function unwrapExports (x) {
 	return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x['default'] : x;
 }
@@ -3709,38 +3673,73 @@ if (process.env.NODE_ENV !== 'production') {
 }
 });
 
-var Layout = _styled.button.withConfig({
-  displayName: "Button__Layout",
-  componentId: "a8ieeq-0"
-})(["background-color:blue;color:white;border:none;padding:0.75rem 1rem;font-size:1rem;margin:0.375rem 0.25rem;"]);
+var fontSize = 18;
+var fontSizes = [
+	12,
+	18,
+	30
+];
+var lineHeight = 28;
+var fontFamily = "'Amiri', Georgia, serif";
+var fontUrl = "https://fonts.googleapis.com/css?family=Amiri:400,700&display=swap";
+var theme = {
+	fontSize: fontSize,
+	fontSizes: fontSizes,
+	lineHeight: lineHeight,
+	fontFamily: fontFamily,
+	fontUrl: fontUrl
+};
+
+var StyledButton = _styled.button.withConfig({
+  displayName: "Button__StyledButton",
+  componentId: "sc-1998vwn-0"
+})(["border:none;background:transparent;margin:0;padding:0;position:relative;cursor:pointer;&:after{content:'';position:absolute;left:0%;top:", "px;height:", "px;right:100%;background:#f6f343aa;mix-blend-mode:darken;transition:right 350ms ease;}&:hover{font-weight:bold;&:after{right:0%;}}"], theme.lineHeight / 3, theme.lineHeight / 4);
 /**
- * `import Button from '@orca/ui/elements/Button`
+ * `import { Button } from '@orca/ui/elements`
  */
 
 
 function Button(props) {
-  var text = props.text,
-      rest = _objectWithoutProperties(props, ["text"]);
-
-  return react.createElement(Layout, rest, text);
+  return react.createElement(StyledButton, props);
 }
 
-Button.propTypes = {
-  text: propTypes.string.isRequired
-};
+var H2 = _styled.p.withConfig({
+  displayName: "Text__H2",
+  componentId: "sc-1g0d4xy-0"
+})(["font-weight:regular;& > strong{display:block;font-weight:bold;}& > small{display:block;font-size:0.777777778em;}"]);
+/**
+ * `import { Text } from '@orca/ui/elements`
+ */
 
-var Style = _styled.h1.withConfig({
-  displayName: "Title__Style",
-  componentId: "sc-50wcm8-0"
-})(["color:red;"]);
+
+function Text(props) {
+  return react.createElement(H2, props);
+}
+
+var H2$1 = _styled.h2.withConfig({
+  displayName: "Title__H2",
+  componentId: "vblemf-0"
+})(["font-size:", "px;line-height:", "px;font-weight:bold;margin:", "px 0;& > small{display:block;font-size:", "px;line-height:", "px;}"], theme.fontSizes[2], theme.lineHeight, theme.lineHeight, theme.fontSize, theme.lineHeight);
+/**
+ * `import { Title } from '@orca/ui/elements`
+ */
+
 
 function Title(props) {
-  var text = props.text;
-  return react.createElement(Style, null, text);
+  return react.createElement(H2$1, props);
 }
 
-Title.propTypes = {
-  text: propTypes.string
-};
+var Div = _styled.div.withConfig({
+  displayName: "View__Div",
+  componentId: "o6k9dv-0"
+})(["font-family:", ";font-size:", "px;line-height:", "px;section{margin:", "px 0;}"], theme.fontFamily, theme.fontSize, theme.lineHeight, theme.lineHeight);
+/**
+ * `import { View } from '@orca/ui/elements`
+ */
 
-export { Button, Title };
+
+function View(props) {
+  return react.createElement(Div, props);
+}
+
+export { Button, Text, Title, View };

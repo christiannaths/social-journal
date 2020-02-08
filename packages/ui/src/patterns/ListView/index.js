@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Layout from './components/Layout';
-import Section from './components/Section';
-import Item from './components/Item';
+import Layout from './Layout';
+import Section from './Section';
+import Item from './Item';
 
 /**
  * `import { ListView } from '@orca/ui/elements`
