@@ -5,23 +5,10 @@
       "port": "4000"
     }
   },
-  "gateway": {
-    "server": {
-      "host": "localhost",
-      "port": "4100"
-    }
-  },
   "webapp": {
     "server": {
       "host": "localhost",
       "port": "4200"
-    }
-  },
-  "ui": {},
-  "styleguide": {
-    "server": {
-      "host": "localhost",
-      "port": "4300"
     }
   }
 }
