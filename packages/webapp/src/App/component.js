@@ -1,17 +1,20 @@
 import React from 'react';
+import { useContext } from 'react';
 import { Helmet } from 'react-helmet';
-import logo from './logo.svg';
-import { Layout, Header, Logo } from './style';
-import StyleReset from './styleReset';
-import StyleTypography from './styleTypography';
-import { Patterns } from '@orca/ui';
-import theme from '@orca/ui/theme';
-import * as Elements from '@orca/ui/elements';
-import { View, Button, Title } from '@orca/ui/elements';
+import theme from 'ui/theme';
+import ResetStyles from 'ui/base/ResetStyles';
+import { View, Panel, Button, Title } from 'ui/elements';
+import ListMenu from 'ui/patterns/ListMenu';
+import { ReactComponent as OrcaIcon } from 'ui/branding/orca-icon.svg';
+import { text, content } from 'lib';
 
-console.log({ Patterns });
-console.log({ Elements });
-console.log({ Button });
+// console.log(text);
+console.log({ content: content() });
+
+// const LanguageContext = React.createContext({
+//   locale: 'en',
+//   content: content('en'),
+// });
 
 function App() {
   return (
@@ -19,24 +22,54 @@ function App() {
       <Helmet>
         <link href={theme.fontUrl} rel="stylesheet" />
       </Helmet>
-      <StyleReset />
-      <StyleTypography />
+      <ResetStyles />
       <View>
-        <Header>
-          <Logo src={logo} alt="logo" />
-          <Title>Hello World</Title>
-        </Header>
+        <Panel>
+          <header>
+            <div>
+              <OrcaIcon />
+            </div>
+          </header>
 
-        <section>
-          <Patterns.ListMenu
-            items={[
-              { label: 'Option 1', action: console.log },
-              { label: 'Option 2', action: console.log },
-              { label: 'Option 3', action: console.log },
-              { label: 'Option 4', action: console.log },
-            ]}
-          />
-        </section>
+          <section>
+            <p
+              children={text(`
+                You walk up to a wooden building, there’s a sign over the
+                door…
+              `)}
+            />
+
+            <Title>Welcome to Orca</Title>
+
+            <p
+              children={text(`
+                You're standing at the entrance, an old man,
+                seated—slender in frame, his face solumn but gentle—looks
+                up at you, but says nothing. What do you say?
+              `)}
+            />
+          </section>
+
+          <section>
+            <ListMenu
+              items={[
+                {
+                  label: text(`"I'd like to join"`),
+                  action: console.log,
+                },
+                {
+                  label: text(`"I've been here before, let me in"`),
+                  action: console.log,
+                  default: true,
+                },
+                {
+                  label: text(`"What is this place?"`),
+                  action: console.log,
+                },
+              ]}
+            />
+          </section>
+        </Panel>
       </View>
     </React.Fragment>
   );

@@ -13,8 +13,9 @@ const Item = styled.li`
 `;
 
 const MenuButton = styled(Button)`
-  /* position: relative; */
-  /* padding: 0 1em; */
+  font-weight: bold;
+  font-style: italic;
+  color: ${theme.grey};
 
   &:before {
     content: '\u00A0';
@@ -22,10 +23,14 @@ const MenuButton = styled(Button)`
     left: -1em;
   }
 
-  &:hover:before {
-    content: '\u203A';
-    position: relative;
-    left: -1em;
+  &:hover {
+    color: ${theme.black};
+
+    &:before {
+      content: '\u203A';
+      position: relative;
+      left: -1em;
+    }
   }
 `;
 

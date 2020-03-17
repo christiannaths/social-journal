@@ -1,0 +1,21 @@
+{
+  "pretty": true,
+  "indent": 2,
+  "precision": 5,
+  "plugins": [
+    { "removeDimensions": true },
+    {
+      "removeAttrs": { "attrs": "fill" }
+    },
+    {
+      "addAttributesToSVGElement": {
+        "attributes": [
+          { "fill": "currentColor" },
+          { "width": "1em" },
+          { "height": "1em" }
+        ]
+      }
+    },
+    { "sortAttrs": true }
+  ]
+}

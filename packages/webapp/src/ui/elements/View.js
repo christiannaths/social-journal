@@ -7,6 +7,7 @@ const Div = styled.div`
   font-family: ${theme.fontFamily};
   font-size: ${theme.fontSize}px;
   line-height: ${theme.lineHeight}px;
+  color: ${theme.black};
 
   section {
     margin: ${theme.lineHeight}px 0;

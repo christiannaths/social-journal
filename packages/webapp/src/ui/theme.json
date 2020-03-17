@@ -3,5 +3,8 @@
   "fontSizes": [12, 18, 30],
   "lineHeight": 28,
   "fontFamily": "'Amiri', Georgia, serif",
-  "fontUrl": "https://fonts.googleapis.com/css?family=Amiri:400,700&display=swap"
+  "fontUrl": "https://fonts.googleapis.com/css?family=Amiri:400,400i,700,700i&display=swap",
+  "greyLight": "#ccc",
+  "grey": "#6D7278",
+  "black": "#26292B"
 }
